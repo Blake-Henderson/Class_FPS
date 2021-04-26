@@ -6,6 +6,11 @@ public class EnemyHealth : MonoBehaviour
 
     int numHits = 0;
 
+    void OnEnable()
+    {
+        numHits = 0;
+    }
+
     void OnCollisionEnter(Collision collision)
     {
         if (collision.transform.CompareTag("bullet"))
@@ -14,7 +19,7 @@ public class EnemyHealth : MonoBehaviour
 
             if (numHits >= health)
             {
-                Destroy(gameObject);
+                gameObject.SetActive(false);
             }
         }
     }
